@@ -1,7 +1,7 @@
 @extends('admin.layouts.layout')
 @section('Controle Admin')
-Dashboard - Admin
+Create Product Attribute - Admin
 @endsection
 @section('admin_layout')
-    <h3>Admin Dashboard</h3>
+    <h3>Create Product Attribute Page</h3>
 @endsection

@@ -1,7 +1,7 @@
 @extends('admin.layouts.layout')
 @section('Controle Admin')
-Dashboard - Admin
+New Payment Method - Admin
 @endsection
 @section('admin_layout')
-    <h3>Admin Dashboard</h3>
+    <h3>Add New Payment Method Page</h3>
 @endsection

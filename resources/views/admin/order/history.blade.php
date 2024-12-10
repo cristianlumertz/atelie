@@ -1,7 +1,7 @@
 @extends('admin.layouts.layout')
 @section('Controle Admin')
-Dashboard - Admin
+Order History - Admin
 @endsection
 @section('admin_layout')
-    <h3>Admin Dashboard</h3>
+    <h3>Order History Page</h3>
 @endsection
