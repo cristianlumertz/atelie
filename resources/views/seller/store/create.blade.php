@@ -1,13 +1,13 @@
-@extends('admin.layouts.layout')
-@section('Controle Admin')
-Create Category - Admin
+@extends('seller.layouts.layout')
+@section('Seller Painel')
+Create New Store - Seller
 @endsection
-@section('admin_layout')
+@section('seller_layout')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-tittle mb-0">Create Category</h5>
+                    <h5 class="card-tittle mb-0">Create Store</h5>
                 </div>
                 <div class="card-body">
                     @if ($errors->any())
@@ -25,12 +25,18 @@ Create Category - Admin
                             {{session('message')}}
                         </div>
                     @endif
-                    <form action="{{route('store.cat')}}" method="POST">
+                    <form action="{{route('create.store')}}" method="POST">
                     @csrf
-                    <label for="category_name">Give Name of Your Category</label>
-                    <input type="text" class="form-control" name="category_name" placeholder="Input">
+                    <label for="store_name">Give Name of Your Store</label>
+                    <input type="text" class="form-control" name="store_name" placeholder="Input">
 
-                    <button type="submit" class="btn btn-primary w-100 mt-2">Add Category</button>
+                    <label for="details">Description</label>
+                    <textarea name="details" id="details" cols="30" rows="10" class="form-control"></textarea>
+
+                    <label for="slug">Slug</label>
+                    <input type="text" class="form-control" name="slug" placeholder="asib-store">
+
+                    <button type="submit" class="btn btn-primary w-100 mt-2">Create Store</button>
                     </form>
                 </div>
             </div>

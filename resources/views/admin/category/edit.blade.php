@@ -1,13 +1,13 @@
 @extends('admin.layouts.layout')
 @section('Controle Admin')
-Create SubCategory - Admin
+Edit Category - Admin
 @endsection
 @section('admin_layout')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-tittle mb-0">Create SubCategory</h5>
+                    <h5 class="card-tittle mb-0">Edit Category</h5>
                 </div>
                 <div class="card-body">
                     @if ($errors->any())
@@ -25,19 +25,13 @@ Create SubCategory - Admin
                             {{session('message')}}
                         </div>
                     @endif
-                    <form action="{{route('store.subcat')}}" method="POST">
+                    <form action="{{route('update.cat', $category_info->id)}}" method="POST">
                     @csrf
-                    <label for="subcategory_name" class="fw-bold md-2">Give Name of Your SubCategory</label>
-                    <input type="text" class="form-control" name="subcategory_name" placeholder="Input">
+                    @method('PUT')
+                    <label for="category_name">Give Name of Your Category</label>
+                    <input type="text" class="form-control" name="category_name" value="{{$category_info->category_name}}">
 
-                    <label for="category_id" class="fw-bold md-2">Select Category</label>
-                    <select name="category_id" class="form-control" id="category_id">
-                        @foreach($categories as $category)
-                            <option value="{{$category->id}}">{{$category->category_name}}</option>
-                        @endforeach
-                    </select>
-
-                    <button type="submit" class="btn btn-primary w-100 mt-2">Add SubCategory</button>
+                    <button type="submit" class="btn btn-primary w-100 mt-2">Update Category</button>
                     </form>
                 </div>
             </div>

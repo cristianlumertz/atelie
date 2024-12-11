@@ -14,11 +14,12 @@
 
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
 
-	<title>@yield('Controle Admin')</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<title>@yield('Seller Painel')</title>
 
 	<link href="{{asset('admin_asset/css/app.css')}}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	@livewireStyles
 </head>
 
 <body>
@@ -26,7 +27,7 @@
 		<nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
 				<a class="sidebar-brand" href="index.html">
-          <span class="align-middle">AdminKit</span>
+          <span class="align-middle">Seller Dashboard</span>
         </a>
 
 				<ul class="sidebar-nav">
@@ -34,115 +35,50 @@
 						Main
 					</li>
 
-					<li class="sidebar-item  {{request()->routeIs(('admin')?'active':'')}}">
-						<a class="sidebar-link" href="{{route('admin')}}">
+					<li class="sidebar-item  {{request()->routeIs(('vendor')?'active':'')}}">
+						<a class="sidebar-link" href="{{route('vendor')}}">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
-
-                    <li class="sidebar-header">
-						Category
+					<li class="sidebar-item  {{request()->routeIs(('vendor.order.history')?'active':'')}}">
+						<a class="sidebar-link" href="{{route('vendor.order.history')}}">
+              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Order History</span>
+            </a>
 					</li>
 
-					<li class="sidebar-item  {{request()->routeIs(('category.create')?'active':'')}}">
-						<a class="sidebar-link" href="{{route('category.create')}}">
+					<li class="sidebar-header">
+						Store
+					</li>
+
+					<li class="sidebar-item  {{request()->routeIs(('vendor.store')?'active':'')}}">
+						<a class="sidebar-link" href="{{route('vendor.store')}}">
               <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
             </a>
 					</li>
 
-                    <li class="sidebar-item  {{request()->routeIs(('category.manage')?'active':'')}}">
-						<a class="sidebar-link" href="{{route('category.manage')}}">
+                    <li class="sidebar-item  {{request()->routeIs(('vendor.store.manage')?'active':'')}}">
+						<a class="sidebar-link" href="{{route('vendor.store.manage')}}">
               <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
             </a>
 					</li>
 
-                    <li class="sidebar-header">
-						SubCategory
-					</li>
-
-					<li class="sidebar-item  {{request()->routeIs(('subcategory.create')?'active':'')}}">
-						<a class="sidebar-link" href="{{route('subcategory.create')}}">
-              <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
-            </a>
-					</li>
-
-                    <li class="sidebar-item  {{request()->routeIs(('subcategory.manage')?'active':'')}}">
-						<a class="sidebar-link" href="{{route('subcategory.manage')}}">
-              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
-            </a>
-					</li>
-
-                    <li class="sidebar-header">
-						Attribute
-					</li>
-
-					<li class="sidebar-item  {{request()->routeIs(('productattribute.create')?'active':'')}}">
-						<a class="sidebar-link" href="{{route('productattribute.create')}}">
-              <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
-            </a>
-					</li>
-
-                    <li class="sidebar-item  {{request()->routeIs(('productattribute.manage')?'active':'')}}">
-						<a class="sidebar-link" href="{{route('productattribute.manage')}}">
-              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
-            </a>
-					</li>
-
-                    <li class="sidebar-header">
-						Discount
-					</li>
-
-					<li class="sidebar-item  {{request()->routeIs(('discount.create')?'active':'')}}">
-						<a class="sidebar-link" href="{{route('discount.create')}}">
-              <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
-            </a>
-					</li>
-
-                    <li class="sidebar-item  {{request()->routeIs(('discount.manage')?'active':'')}}">
-						<a class="sidebar-link" href="{{route('discount.manage')}}">
-              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
-            </a>
-					</li>
-
-                    <li class="sidebar-header">
+					<li class="sidebar-header">
 						Product
 					</li>
 
-					<li class="sidebar-item  {{request()->routeIs(('product.manage')?'active':'')}}">
-						<a class="sidebar-link" href="{{route('product.manage')}}">
-              <i class="align-middle" data-feather="shopping-bag"></i> <span class="align-middle">Manage Product</span>
+					<li class="sidebar-item  {{request()->routeIs(('vendor.product')?'active':'')}}">
+						<a class="sidebar-link" href="{{route('vendor.product')}}">
+              <i class="align-middle" data-feather="plus"></i> <span class="align-middle">Create</span>
             </a>
 					</li>
 
-                    <li class="sidebar-item  {{request()->routeIs(('product.review.manage')?'active':'')}}">
-						<a class="sidebar-link" href="{{route('product.review.manage')}}">
-              <i class="align-middle" data-feather="star"></i> <span class="align-middle">Manage Review</span>
+                    <li class="sidebar-item  {{request()->routeIs(('vendor.product.manage')?'active':'')}}">
+						<a class="sidebar-link" href="{{route('vendor.product.manage')}}">
+              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Manage</span>
             </a>
 					</li>
 
-                    <li class="sidebar-header">
-						History
-					</li>
-
-					<li class="sidebar-item  {{request()->routeIs(('admin.cart.history')?'active':'')}}">
-						<a class="sidebar-link" href="{{route('admin.cart.history')}}">
-              <i class="align-middle" data-feather="shopping-cart"></i> <span class="align-middle">Cart</span>
-            </a>
-					</li>
-
-                    <li class="sidebar-item  {{request()->routeIs(('admin.order.history')?'active':'')}}">
-						<a class="sidebar-link" href="{{route('admin.order.history')}}">
-              <i class="align-middle" data-feather="list"></i> <span class="align-middle">Order</span>
-            </a>
-					</li>
-
-					<li class="sidebar-item {{request()->routeIs(('admin.settings')?'active':'')}}">
-						<a class="sidebar-link" href="{{'admin.settings'}}">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Settings</span>
-            </a>
-					</li>
-
-
+                   
 				</ul>
 
 				<div class="sidebar-cta">
@@ -327,7 +263,7 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-                    @yield('admin_layout')
+                    @yield('seller_layout')
 
 				</div>
 			</main>
@@ -363,7 +299,7 @@
 	</div>
 
 	<script src={{asset('admin_asset/js/app.js')}}></script>
-
+	@livewiresScripts
 </body>
 
 </html>

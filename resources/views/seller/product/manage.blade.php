@@ -1,13 +1,13 @@
-@extends('admin.layouts.layout')
-@section('Controle Admin')
-Manage Category - Admin
+@extends('seller.layouts.layout')
+@section('Seller Painel')
+Manage Product - Seller
 @endsection
-@section('admin_layout')
+@section('seller_layout')
     <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-tittle mb-0">All Category</h5>
+                    <h5 class="card-tittle mb-0">All Product Added By You</h5>
                 </div>
                 @if (session('message'))
                 <div class="alert alert-success">
@@ -20,17 +20,22 @@ Manage Category - Admin
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Category Name</th>
+                                    <th>Product Name</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($categories as $cat)
+                                @foreach ($products as $product)
                                 <tr>
-                                    <td>{{$cat->id}}</td>
-                                    <td>{{$cat->category_name}}</td>
-                                    <td><a href="{{route('show.cat', $cat->id)}}" class="btn btn-info">Edit</a>
-                                    <form action="{{route('delete.cat', $cat->id)}}" method="POST">
+                                    <td>{{$product->id}}</td>
+                                    <td>{{$product->product_name}}</td>
+                                    <td>{{$product->stock_quantity}}</td>
+                                    <td>{{$product->regular_price}}</td>
+
+                                    <td><a href="" class="btn btn-info">Edit</a>
+                                    <form action="" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <input type="submit" value="Delete" class="btn btn-danger">
